@@ -1,0 +1,9 @@
+language: html
+
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t daocloud-demo .
