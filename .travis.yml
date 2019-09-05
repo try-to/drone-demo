@@ -3,7 +3,9 @@ language: html
 sudo: required
 
 services:
+  - nginx
   - docker
+
 
 script:
   - docker build -t daocloud-demo .
