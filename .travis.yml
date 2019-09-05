@@ -8,4 +8,4 @@ services:
 
 
 script:
-  - docker build -t daocloud-demo .
+  - docker build -t try-to/daocloud-demo:v1 .
