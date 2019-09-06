@@ -2,7 +2,6 @@ workspace:
   base: /srv/drone-demo
   path: .
 
-
 pipeline:
   test1:
     image: mhart/alpine-node:9.1.0
