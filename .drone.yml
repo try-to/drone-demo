@@ -11,9 +11,9 @@ pipeline:
     password: $TEST_PASSWORD
     port: 22
     script:
-      - echo ${TEST_HOST}
-      - echo ${TEST_USERNAME}
-      - echo ${TEST_PASSWORD}
+      - echo $TEST_HOST
+      - echo $TEST_USERNAME
+      - echo $TEST_PASSWORD
       - ping www.baidu.com
 #     environment:
 #       TEST_HOST:
