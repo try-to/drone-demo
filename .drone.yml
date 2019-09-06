@@ -18,6 +18,8 @@ steps:
       image: appleboy/drone-ssh
       pull: true
       settings:
+        command_timeout: 2m
+        port: 22
         host:
           from_secret: test_host
         username:
@@ -29,8 +31,6 @@ steps:
           - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
           - docker rm -f docker-demo || true
           - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-      command_timeout: 2m
-      port: 22
 
 
   # - name: pipeline
