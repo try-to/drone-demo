@@ -7,13 +7,13 @@ pipeline:
     image: appleboy/drone-ssh
     secrets: [ test_host, test_username, test_password ]
     host: $test_host
-    username: ${TEST_USERNAME}
-    password: ${TEST_PASSWORD}
+    username: $test_username
+    password: $test_password
     port: 22
     script:
       - echo ${test_host}
-      - echo ${TEST_USERNAME}
-      - echo ${TEST_PASSWORD}
+      - echo ${test_username}
+      - echo ${test_password}
       - ping www.baidu.com
 #     environment:
 #       TEST_HOST:
