@@ -28,12 +28,12 @@ steps:
     password:
       from_secret: test_password
     script:
-      - echo "login docker"
-      - echo "login success, pulling..."
-      - docker rm -f $(docker ps -a |  grep "baota*"  | awk '{print $1}')
+      - echo "登录..."
+      - echo "删除旧容器和镜像"
+      - docker rmi $(docker images | grep "^tryto/baota*" | awk "{print $3}")  || true
+      - docker rm -f $(docker ps -a |  grep "tryto/baota*"  | awk '{print $1}') || true
       - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-      - docker rm -f docker-demo || true
-      - echo "image running"
+      - echo "镜像运行"
       - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
 
 
