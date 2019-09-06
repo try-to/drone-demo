@@ -6,9 +6,9 @@ pipeline:
   deploy-test:
     image: appleboy/drone-ssh
     secrets: [ test_host, test_host_username, test_host_password ]
-    host: ${TEST_HOST}
-    username: ${TEST_USERNAME}
-    password: ${TEST_PASSWORD}
+    host: {TEST_HOST}
+    username: {TEST_USERNAME}
+    password: {TEST_PASSWORD}
     port: 22
     script:
       - echo ${TEST_HOST}
