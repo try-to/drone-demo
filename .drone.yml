@@ -8,7 +8,7 @@ pipeline:
     secrets: [ test_host, test_username, test_password ]
     host: ${TEST_HOST}
     username: ${TEST_USERNAME}
-    password: ${test_password}
+    password: ${TEST_PASSWORD}
     port: 22
     script:
       - echo ${TEST_HOST}
