@@ -5,19 +5,16 @@ workspace:
 pipeline:
   deploy-test:
       image: appleboy/drone-ssh
-#       host: [ test_host ]
-#       username: [ test_host_username ]
-#       password: [ test_host_password ]
       port: 22
       script:
         - ping www.baidu.com
-     environment:
-      USERNAME:
-        from_secret: test_host_username
-      PASSWORD:
-        from_secret: test_host_password
-      HOST:
-        from_secret: test_host
+      environment:
+        USERNAME:
+          from_secret: test_host_username
+        PASSWORD:
+          from_secret: test_host_password
+        HOST:
+          from_secret: test_host
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
