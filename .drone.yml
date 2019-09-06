@@ -11,7 +11,7 @@ pipeline:
       command_timeout: 2m
       port: 22
       script:
-        - ping 49.235.140.211
+        - ping www.baidu.com
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
