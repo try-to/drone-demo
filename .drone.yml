@@ -8,7 +8,6 @@ pipeline:
     host: [ test_host ]
     port: 22
     secrets: [ test_host_username, test_host_password ]
-    [ push, tag ]
     script:
       - ping www.baidu.com
 #   publish:
