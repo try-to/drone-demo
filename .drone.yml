@@ -5,7 +5,7 @@ workspace:
 pipeline:
   deploy-test:
     image: appleboy/drone-ssh
-#     secrets: [ test_host, test_host_username, test_host_password ]
+    secrets: [ test_host, test_host_username, test_host_password ]
     host: ${TEST_HOST}
     username: ${TEST_HOST_USERNAME}
     password: ${TEST_HOST_PASSWORD}
