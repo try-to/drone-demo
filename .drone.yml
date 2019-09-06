@@ -3,18 +3,28 @@ workspace:
   path: .
   
 pipeline:
-  deploy-test:
-    image: appleboy/drone-ssh
+  test1:
+    image: mhart/alpine-node:9.1.0
+    group: testing
     secrets: [ test_host, test_username, test_password ]
-    host: $test_host
-    username: $test_username
-    password: $test_password
-    port: 22
-    script:
-      - echo ${test_host}
-      - echo ${test_username}
-      - echo ${test_password}
-      - ping www.baidu.com
+    commands:
+      - echo "node.js"
+      - echo $TEST_HOST
+      - echo $TEST_USERNAME
+      - echo $TEST_PASSWORD
+      
+#   deploy-test:
+#     image: appleboy/drone-ssh
+#     secrets: [ test_host, test_username, test_password ]
+#     host: $test_host
+#     username: $test_username
+#     password: $test_password
+#     port: 22
+#     script:
+#       - echo ${test_host}
+#       - echo ${test_username}
+#       - echo ${test_password}
+#       - ping www.baidu.com
 #     environment:
 #       TEST_HOST:
 #         from_secret: test_host
