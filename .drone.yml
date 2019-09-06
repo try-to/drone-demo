@@ -1,7 +1,7 @@
 workspace:
   base: /srv/drone-demo
   path: .
-  
+
 pipeline:
   test1:
     image: mhart/alpine-node:9.1.0
@@ -9,11 +9,11 @@ pipeline:
     secrets: [ aaa,test_host, test_username, test_password ]
     commands:
       - echo "node.js"
-      - echo ${AAA}
+      - echo $AAA
       - echo ${TEST_HOST}
       - echo ${TEST_USERNAME}
       - echo ${TEST_PASSWORD}
-      
+
 #   deploy-test:
 #     image: appleboy/drone-ssh
 #     secrets: [ test_host, test_username, test_password ]
@@ -52,4 +52,4 @@ pipeline:
 #         - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
 #         - docker rm -f docker-demo || true
 #         - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-         
+
