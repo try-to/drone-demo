@@ -2,18 +2,48 @@ kind: pipeline
 name: demo
 
 steps:
-  - name: pipeline
-    image: appleboy/drone-ssh
+  - name: publish
+    image: plugins/docker
+    registry: registry.cn-hangzhou.aliyuncs.com
+    repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
     settings:
-      host:
-        from_secret: test_host
       username:
-        from_secret: test_username
+        from_secret: docker_username
       password:
-        from_secret: test_password
-    port: 22
-    commands:
-      - ping www.baidu.com
+        from_secret: docker_password
+    tags:
+      - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+    insecure: true
+
+
+  - name: deploy-test
+      image: appleboy/drone-ssh
+      settings:
+        host:
+          from_secret: test_host
+        username:
+          from_secret: test_username
+        password:
+          from_secret: test_password
+      command_timeout: 2m
+      port: 22
+      script:
+        - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+        - docker rm -f docker-demo || true
+        - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+
+  # - name: pipeline
+  #   image: appleboy/drone-ssh
+  #   settings:
+  #     host:
+  #       from_secret: test_host
+  #     username:
+  #       from_secret: test_username
+  #     password:
+  #       from_secret: test_password
+  #   port: 22
+  #   commands:
+  #     - ping www.baidu.com
 
 # workspace:
 #   base: /srv/drone-demo
