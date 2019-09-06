@@ -13,8 +13,7 @@ pipeline:
     insecure: true
   deploy-test:
       image: appleboy/drone-ssh
-      host:
-        - 49.235.140.211
+      host: [ test_host ]
       username: [ test_host_username ]
       password: [ test_host_password ]
       port: 22
