@@ -7,7 +7,6 @@ pipeline:
     image: plugins/docker
     registry: registry.cn-hangzhou.aliyuncs.com
     repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
-    tags:
-        - latest
+    auto_tag: true
     secrets: [ docker_username, docker_password ]
     insecure: true
