@@ -6,9 +6,9 @@ pipeline:
   deploy-test:
       image: appleboy/drone-ssh
       host: 
-        - 49.234.46.242
-      username: root
-      password: Wj394402133!
+        - test_host
+      username: test_host_username
+      password: test_host_password
       port: 22
       script:
         - ping www.baidu.com
