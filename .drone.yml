@@ -4,7 +4,7 @@
 kind: pipeline
 name: default
 
-pipeline:
+steps:
   test1:
     image: mhart/alpine-node:9.1.0
     group: testing
