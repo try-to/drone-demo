@@ -3,31 +3,18 @@ workspace:
   path: .
   
 pipeline:
-  test2:
-    image: appleboy/golang-testing
+  deploy-test:
+    image: appleboy/drone-ssh
     secrets: [ test_host, test_host_username, test_host_password ]
-    commands:
-      - echo "golang"
+    host: $TEST_HOST
+    username: $TEST_HOST_USERNAME
+    password: $TEST_HOST_PASSWORD
+    port: 22
+    script:
       - echo $TEST_HOST
       - echo $TEST_HOST_USERNAME
       - echo $TEST_HOST_PASSWORD
-      
-#   deploy-test:
-#     image: appleboy/drone-ssh
-#     settings:
-#       host: 
-#         from_secret: test_host
-#       username: 
-#         from_secret: test_host_username
-#       password: 
-#         from_secret: test_host_password
-#     secrets: [ test_host, test_host_username, test_host_password ]
-#     host: ${test_host}
-#     username: ${test_host_username}
-#     password: ${test_host_password}
-#     port: 22
-#     script:
-#       - ping www.baidu.com
+      - ping www.baidu.com
 #     environment:
 #       TEST_HOST:
 #         from_secret: test_host
