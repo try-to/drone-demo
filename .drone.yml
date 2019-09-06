@@ -4,16 +4,16 @@ workspace:
   
 pipeline:
     ssh:
-    image: appleboy/drone-ssh
-    settings:
-      host: [ test_host ]
-      username: [ test_host_username ]
-      password: [ test_host_password ]
-      command_timeout: 2m
-      port: 22
-      script:
-        - echo hello
-        - echo world
+      image: appleboy/drone-ssh
+      settings:
+        host: [ test_host ]
+        username: [ test_host_username ]
+        password: [ test_host_password ]
+        command_timeout: 2m
+        port: 22
+        script:
+          - echo hello
+          - echo world
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
