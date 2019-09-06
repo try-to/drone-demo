@@ -2,9 +2,6 @@ workspace:
   base: /srv/drone-demo
   path: .
 
-environment:
-  DOCKER_AAA:
-    from_secret: docker_aaa
 
 pipeline:
   test1:
@@ -16,7 +13,9 @@ pipeline:
       - echo ${docker_aaa}
       - echo ${DOCKER_AAA}
       - echo $DOCKER_AAA
-
+  environment:
+    DOCKER_AAA:
+      from_secret: docker_aaa
 #   deploy-test:
 #     image: appleboy/drone-ssh
 #     secrets: [ test_host, test_username, test_password ]
