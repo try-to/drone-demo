@@ -14,9 +14,9 @@ pipeline:
   deploy-test:
       image: appleboy/drone-ssh
       host: [ test_host ]
-      username: root
+      username: [ test_host_username ]
+      password: [ test_host_password ]
       port: 22
-      secrets: [ ssh_key ]
       script:
         - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
         - docker rm -f docker-demo || true
