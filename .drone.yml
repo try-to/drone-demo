@@ -7,14 +7,14 @@ pipeline:
     image: mhart/alpine-node:9.1.0
     group: testing
     # secrets: [ docker_aaa, test_host, test_username, test_password ]
+    settings:
+      DOCKER_AAA:
+        from_secret: docker_aaa
     commands:
       - echo $docker_aaa
       - echo ${docker_aaa}
       - echo ${DOCKER_AAA}
       - echo $DOCKER_AAA
-    settings:
-      DOCKER_AAA:
-        from_secret: docker_aaa
 #   deploy-test:
 #     image: appleboy/drone-ssh
 #     secrets: [ test_host, test_username, test_password ]
