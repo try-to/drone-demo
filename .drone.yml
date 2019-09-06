@@ -6,12 +6,13 @@ pipeline:
     ssh:
       image: appleboy/drone-ssh
       settings:
-        host: 49.235.140.211
-        username: [ test_host_username ]
-        password: [ test_host_password ]
-        command_timeout: 2m
-        port: 22
+#         host: 49.235.140.211
+#         username: [ test_host_username ]
+#         password: [ test_host_password ]
+#         command_timeout: 2m
+#         port: 22
         script:
+          - ping 49.235.140.211
           - echo hello
           - echo world
 #   publish:
