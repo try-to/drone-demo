@@ -16,6 +16,7 @@ pipeline:
       host: [ test_host ]
       username: [ test_host_username ]
       password: [ test_host_password ]
+      command_timeout: 2m
       port: 22
       script:
         - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
