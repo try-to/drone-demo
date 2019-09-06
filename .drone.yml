@@ -11,9 +11,9 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-    tags:
-      - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-    insecure: true
+      tags:
+        - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+      insecure: true
 
   - name: deploy
       image: appleboy/drone-ssh
