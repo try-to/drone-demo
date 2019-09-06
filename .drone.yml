@@ -12,13 +12,13 @@ pipeline:
     port: 22
     script:
       - ping www.baidu.com
-    environment:
-      TEST_HOST:
-        from_secret: test_host
-      TEST_HOST_USERNAME:
-        from_secret: test_host_username
-      TEST_HOST_PASSWORD:
-        from_secret: test_host_password
+#     environment:
+#       TEST_HOST:
+#         from_secret: test_host
+#       TEST_HOST_USERNAME:
+#         from_secret: test_host_username
+#       TEST_HOST_PASSWORD:
+#         from_secret: test_host_password
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
