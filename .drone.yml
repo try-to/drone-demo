@@ -8,6 +8,8 @@ pipeline:
     group: testing
     secrets: [ docker_aaa,test_host, test_username, test_password ]
     commands:
+      - echo docker_aaa
+      - echo DOCKER_AAA
       - echo $docker_aaa
       - echo ${docker_aaa}
       - echo ${DOCKER_AAA}
