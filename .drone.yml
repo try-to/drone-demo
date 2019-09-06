@@ -27,10 +27,6 @@ steps:
       from_secret: test_username
     password:
       from_secret: test_password
-    username:
-      from_secret:
-    password:
-      from_secret:
     script:
       - echo "login docker"
       - sudo docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD registry.cn-hangzhou.aliyuncs.com
