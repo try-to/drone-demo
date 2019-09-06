@@ -13,10 +13,7 @@ steps:
         from_secret: test_password
     port: 22
     commands:
-      - echo $test_host
-      - echo ${docker_aaa}
-      - echo ${DOCKER_AAA}
-      - echo $DOCKER_AAA
+      - ping www.baidu.com
 
 # workspace:
 #   base: /srv/drone-demo
