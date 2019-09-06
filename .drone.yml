@@ -1,9 +1,18 @@
 workspace:
   base: /srv/drone-demo
   path: .
+  
 pipeline:
   build:
     image: plugins/docker
     commands:
       - pwd
-      - echo hello world
+      - docker images
+  publish:
+    image: plugins/docker
+    registry: registry.cn-hangzhou.aliyuncs.com
+    repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
+    tags:
+        - latest
+    secrets: [ docker_username, docker_password ]
+    insecure: true
