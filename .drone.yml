@@ -3,23 +3,34 @@ workspace:
   path: .
   
 pipeline:
-  publish:
-    image: plugins/docker
-    registry: registry.cn-hangzhou.aliyuncs.com
-    repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
-    tags:
-      - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-    secrets: [ docker_username, docker_password ]
-    insecure: true
-  deploy-test:
-      image: appleboy/drone-ssh
+    ssh:
+    image: appleboy/drone-ssh
+    settings:
       host: [ test_host ]
       username: [ test_host_username ]
       password: [ test_host_password ]
       command_timeout: 2m
       port: 22
       script:
-        - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-        - docker rm -f docker-demo || true
-        - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+        - echo hello
+        - echo world
+#   publish:
+#     image: plugins/docker
+#     registry: registry.cn-hangzhou.aliyuncs.com
+#     repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
+#     tags:
+#       - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+#     secrets: [ docker_username, docker_password ]
+#     insecure: true
+#   deploy-test:
+#       image: appleboy/drone-ssh
+#       host: [ test_host ]
+#       username: [ test_host_username ]
+#       password: [ test_host_password ]
+#       command_timeout: 2m
+#       port: 22
+#       script:
+#         - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+#         - docker rm -f docker-demo || true
+#         - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
          
