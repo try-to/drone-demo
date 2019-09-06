@@ -11,3 +11,14 @@ pipeline:
       - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
     secrets: [ docker_username, docker_password ]
     insecure: true
+  deploy-test:
+      image: appleboy/drone-ssh
+      host: [ test_host ]
+      username: root
+      port: 22
+      secrets: [ ssh_key ]
+      script:
+        - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+        - docker rm -f docker-demo || true
+        - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+         
