@@ -5,17 +5,23 @@ kind: pipeline
 name: default
 
 steps:
-  - name: build
   image: alpine
-  # secrets: [ docker_aaa, test_host, test_username, test_password ]
   environment:
     DOCKER_AAA:
-      from_secret: docker_aaa
-  commands:
-    - echo $docker_aaa
-    - echo ${docker_aaa}
-    - echo ${DOCKER_AAA}
-    - echo $DOCKER_AAA
+      from_secret: DOCKER_AAA
+
+deploy-test:
+    image: appleboy/drone-ssh
+    secrets: [ docker_aaa, test_host, test_username, test_password ]
+    host: $test_host
+    username: $test_username
+    password: $test_password
+    port: 22
+    script:
+      - echo $docker_aaa
+      - echo ${docker_aaa}
+      - echo ${DOCKER_AAA}
+      - echo $DOCKER_AAA
 
 #   deploy-test:
 #     image: appleboy/drone-ssh
