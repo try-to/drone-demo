@@ -5,16 +5,17 @@ workspace:
 pipeline:
     ssh:
       image: plugins/docker
-      settings:
+      commands:
+        - ping 49.235.140.211
+#       settings:
 #         host: 49.235.140.211
 #         username: [ test_host_username ]
 #         password: [ test_host_password ]
 #         command_timeout: 2m
 #         port: 22
-        script:
-          - ping 49.235.140.211
-          - echo hello
-          - echo world
+#         script:
+#           - echo hello
+#           - echo world
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
