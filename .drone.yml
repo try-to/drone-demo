@@ -4,7 +4,7 @@ workspace:
   
 pipeline:
     ssh:
-      image: appleboy/drone-ssh
+      image: plugins/docker
       settings:
 #         host: 49.235.140.211
 #         username: [ test_host_username ]
