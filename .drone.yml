@@ -10,3 +10,6 @@ pipeline:
     auto_tag: true
     secrets: [ docker_username, docker_password ]
     insecure: true
+    when:
+      event: [ push, tag ]
+      local: false
