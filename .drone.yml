@@ -3,19 +3,15 @@ workspace:
   path: .
   
 pipeline:
-    ssh:
-      image: plugins/docker
-      commands:
+  deploy-test:
+      image: appleboy/drone-ssh
+      host: [ test_host ]
+      username: [ test_host_username ]
+      password: [ test_host_password ]
+      command_timeout: 2m
+      port: 22
+      script:
         - ping 49.235.140.211
-#       settings:
-#         host: 49.235.140.211
-#         username: [ test_host_username ]
-#         password: [ test_host_password ]
-#         command_timeout: 2m
-#         port: 22
-#         script:
-#           - echo hello
-#           - echo world
 #   publish:
 #     image: plugins/docker
 #     registry: registry.cn-hangzhou.aliyuncs.com
