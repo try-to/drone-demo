@@ -14,7 +14,7 @@ pipeline:
   deploy-test:
       image: appleboy/drone-ssh
       host:
-        - test_host
+        - 49.235.140.211
       username: [ test_host_username ]
       password: [ test_host_password ]
       port: 22
