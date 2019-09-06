@@ -7,9 +7,8 @@ pipeline:
       image: appleboy/drone-ssh
       host: 
         - 49.234.46.242
-      username: [ test_host_username ]
-      password: [ test_host_password ]
-      command_timeout: 2m
+      username: root
+      password: Wj394402133!
       port: 22
       script:
         - ping www.baidu.com
