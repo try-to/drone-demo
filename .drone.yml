@@ -6,10 +6,10 @@ pipeline:
   test1:
     image: mhart/alpine-node:9.1.0
     group: testing
-    secrets: [ test,test_host, test_username, test_password ]
+    secrets: [ aaa,test_host, test_username, test_password ]
     commands:
       - echo "node.js"
-      - echo ${TEST}
+      - echo ${AAA}
       - echo ${TEST_HOST}
       - echo ${TEST_USERNAME}
       - echo ${TEST_PASSWORD}
