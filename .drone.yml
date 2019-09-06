@@ -1,12 +1,9 @@
-workspace:
-  base: /srv/drone-demo
-  path: .
+kind: pipeline
+name: demo
 
-pipeline:
-  test1:
+steps:
+  - name: pipeline
     image: mhart/alpine-node:9.1.0
-    group: testing
-    # secrets: [ docker_aaa, test_host, test_username, test_password ]
     settings:
       DOCKER_AAA:
         from_secret: docker_aaa
@@ -15,6 +12,24 @@ pipeline:
       - echo ${docker_aaa}
       - echo ${DOCKER_AAA}
       - echo $DOCKER_AAA
+
+# workspace:
+#   base: /srv/drone-demo
+#   path: .
+
+# pipeline:
+#   test1:
+#     image: mhart/alpine-node:9.1.0
+#     group: testing
+#     # secrets: [ docker_aaa, test_host, test_username, test_password ]
+#     settings:
+#       DOCKER_AAA:
+#         from_secret: docker_aaa
+#     commands:
+#       - echo $docker_aaa
+#       - echo ${docker_aaa}
+#       - echo ${DOCKER_AAA}
+#       - echo $DOCKER_AAA
 #   deploy-test:
 #     image: appleboy/drone-ssh
 #     secrets: [ test_host, test_username, test_password ]
