@@ -14,9 +14,7 @@ steps:
     tags:
       - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
     insecure: true
-
-
-  - name: deploy-test
+  - name: deploy
       image: appleboy/drone-ssh
       settings:
         host:
