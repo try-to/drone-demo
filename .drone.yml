@@ -2,35 +2,35 @@ kind: pipeline
 name: demo
 
 steps:
-  - name: publish
-    image: plugins/docker
-    registry: registry.cn-hangzhou.aliyuncs.com
-    repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
-    settings:
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-      tags:
-        - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-      insecure: true
-  - name: run-test
-      image: appleboy/drone-ssh
-      pull: true
-      settings:
-        command_timeout: 2m
-        port: 22
-        host:
-          from_secret: test_host
-        username:
-          from_secret: test_username
-        password:
-          from_secret: test_password
-        script:
-          - echo deploy
-          - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-          - docker rm -f docker-demo || true
-          - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+- name: publish
+  image: plugins/docker
+  registry: registry.cn-hangzhou.aliyuncs.com
+  repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags:
+      - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+    insecure: true
+- name: run-test
+  image: appleboy/drone-ssh
+  pull: true
+  settings:
+    command_timeout: 2m
+    port: 22
+    host:
+      from_secret: test_host
+    username:
+      from_secret: test_username
+    password:
+      from_secret: test_password
+    script:
+      - echo deploy
+      - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+      - docker rm -f docker-demo || true
+      - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
 
 
 # - name: pipeline
