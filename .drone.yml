@@ -8,6 +8,7 @@ pipeline:
     host: ${test_host}
     username: ${test_host_username}
     password: ${test_host_password}
+    secrets: [ test_host, test_host_username, test_host_password ]
     port: 22
     script:
       - ping www.baidu.com
