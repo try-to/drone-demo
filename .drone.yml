@@ -30,9 +30,9 @@ steps:
     script:
       - echo "登录..."
       - echo "删除旧容器和镜像"
-      - docker rmi $(docker images | grep "baota-${DRONE_COMMIT_BRANCH}*" | awk "{print $3}")  || true
-      - docker rm -f $(docker ps -a |  grep "baota-${DRONE_COMMIT_BRANCH}*"  | awk '{print $1}') || true
-      - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+      - docker rmi $(docker images | grep "baota-${DRONE_COMMIT_BRANCH}*" | awk "{print $3}")
+      - docker rm -f $(docker ps -a |  grep "baota-${DRONE_COMMIT_BRANCH}*"  | awk '{print $1}')
+      - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:baota-${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
       - echo "镜像运行"
       - docker run -d -p 18888:80 --name baota-${DRONE_COMMIT_BRANCH} registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
 
