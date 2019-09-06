@@ -12,9 +12,9 @@ pipeline:
         from_secret: test_host_username
       password:
         from_secret: test_host_password
-    host: host
-    username: username
-    password: password
+#     host: host
+#     username: username
+#     password: password
     port: 22
     script:
       - ping www.baidu.com
