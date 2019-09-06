@@ -1,4 +1,9 @@
-image: dockerfile/nginx
-
-script:
-- echo hello world
+workspace:
+  base: /srv/drone-demo
+  path: .
+pipeline:
+  build:
+    image: dockerfile/nginx
+    commands:
+      - pwd
+      - echo hello world
