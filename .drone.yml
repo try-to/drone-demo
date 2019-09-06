@@ -9,11 +9,11 @@ pipeline:
     script:
       - ping www.baidu.com
     environment:
-      USERNAME:
+      username:
         from_secret: test_host_username
-      PASSWORD:
+      password:
         from_secret: test_host_password
-      HOST:
+      host:
         from_secret: test_host
 #   publish:
 #     image: plugins/docker
