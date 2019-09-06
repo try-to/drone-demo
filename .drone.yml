@@ -8,7 +8,6 @@ pipeline:
     registry: registry.cn-hangzhou.aliyuncs.com
     repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
     tags:
-      - ${DRONE_COMMIT_BRANCH}
-      - latest
+      - ${DRONE_COMMIT_SHA}
     secrets: [ docker_username, docker_password ]
     insecure: true
