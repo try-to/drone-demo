@@ -3,7 +3,7 @@ workspace:
   path: .
 pipeline:
   build:
-    image: dockerfile/nginx
+    image: plugins/docker
     commands:
       - pwd
       - echo hello world
