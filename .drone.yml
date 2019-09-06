@@ -4,9 +4,9 @@ name: demo
 steps:
 - name: publish
   image: plugins/docker
-  registry: registry.cn-hangzhou.aliyuncs.com
-  repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
   settings:
+    registry: registry.cn-hangzhou.aliyuncs.com
+    repo: registry.cn-hangzhou.aliyuncs.com/tryto/baota
     username:
       from_secret: docker_username
     password:
@@ -14,6 +14,7 @@ steps:
     tags:
       - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
     insecure: true
+
 - name: run-test
   image: appleboy/drone-ssh
   pull: true
