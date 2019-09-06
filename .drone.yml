@@ -16,6 +16,7 @@ steps:
     insecure: true
   - name: deploy
       image: appleboy/drone-ssh
+      pull: true
       settings:
         host:
           from_secret: test_host
@@ -23,12 +24,14 @@ steps:
           from_secret: test_username
         password:
           from_secret: test_password
+        script:
+          - echo deploy
+          - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+          - docker rm -f docker-demo || true
+          - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
       command_timeout: 2m
       port: 22
-      script:
-        - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
-        - docker rm -f docker-demo || true
-        - docker run -d -p 18888:80 --name docker-demo registry.cn-hangzhou.aliyuncs.com/tryto/baota:${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+
 
   # - name: pipeline
   #   image: appleboy/drone-ssh
