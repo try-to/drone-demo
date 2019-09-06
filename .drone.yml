@@ -5,8 +5,8 @@ kind: pipeline
 name: default
 
 steps:
-  image: mhart/alpine-node:9.1.0
-  group: testing
+  - name: build
+  image: alpine
   # secrets: [ docker_aaa, test_host, test_username, test_password ]
   environment:
     DOCKER_AAA:
