@@ -7,7 +7,7 @@ name: default
 steps:
   image: mhart/alpine-node:9.1.0
   group: testing
-  secrets: [ docker_aaa, test_host, test_username, test_password ]
+  # secrets: [ docker_aaa, test_host, test_username, test_password ]
   environment:
     DOCKER_AAA:
       from_secret: docker_aaa
