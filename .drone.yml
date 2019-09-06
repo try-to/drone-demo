@@ -9,9 +9,9 @@ pipeline:
     secrets: [ test_host, test_username, test_password ]
     commands:
       - echo "node.js"
-      - echo $TEST_HOST
-      - echo $TEST_USERNAME
-      - echo $TEST_PASSWORD
+      - echo ${TEST_HOST}
+      - echo ${TEST_USERNAME}
+      - echo ${TEST_PASSWORD}
       
 #   deploy-test:
 #     image: appleboy/drone-ssh
