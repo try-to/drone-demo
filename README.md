@@ -1,2 +1,1 @@
 # daocloud-demo
-daocloud-demo
