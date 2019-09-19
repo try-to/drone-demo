@@ -1,0 +1,8 @@
+version: '2.0'
+services:
+  drone-demo:
+    build: .
+    restart: always
+    container_name: "tryto-drone-demo"
+    expose:
+      - 80
