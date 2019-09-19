@@ -35,3 +35,4 @@ steps:
       - sudo docker pull registry.cn-hangzhou.aliyuncs.com/tryto/baota:baota-${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
       - echo "镜像运行"
       - docker run -d -p 18888:80 --name baota-${DRONE_COMMIT_BRANCH} registry.cn-hangzhou.aliyuncs.com/tryto/baota:baota-${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA:0:8}
+
