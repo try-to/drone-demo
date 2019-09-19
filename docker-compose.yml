@@ -1,6 +1,6 @@
 version: '3.0'
 services:
-  drone-demo:
+  demo:
     build: .
     restart: always
     container_name: "tryto-drone-demo"
