@@ -1,9 +1,8 @@
 version: '3.7'
 services:
   demo:
-    build: ./
+    build: .
     restart: always
-    container_name: trytodronedemo
     networks:
       - web
     environment:
