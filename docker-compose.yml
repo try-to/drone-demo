@@ -1,8 +1,13 @@
-version: '3.0'
+version: '3.7'
 services:
   demo:
     build: ./
     restart: always
     container_name: tryto-drone-demo
+    networks:
+      - web
     expose:
       - 80
+networks:
+  web:
+    external: true
