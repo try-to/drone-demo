@@ -6,8 +6,11 @@ services:
     container_name: tryto-drone-demo
     networks:
       - web
-    expose:
-      - 80
+    environment:
+      - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=demo.tryto.cn
+      - LETSENCRYPT_HOST=demo.tryto.cn
+      - LETSENCRYPT_EMAIL=394402133@qq.com
 networks:
   web:
     external: true
